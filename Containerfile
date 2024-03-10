@@ -1,9 +1,9 @@
 # Builder Stage
 FROM alpine AS builder
-WORKDIR /app
+WORKDIR /tmp
 COPY data.txt .
 
 # Final Stage
 FROM fedora AS final
-WORKDIR /app
-COPY --from=builder /app/data.txt .
+WORKDIR /
+COPY --from=builder /data.txt .
